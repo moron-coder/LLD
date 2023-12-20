@@ -1,7 +1,9 @@
 package com.LLD.RestaurantManagementDesign.Entity;
 
+import java.util.Set;
+
 public class Order {
     private String orderId;
-    private Waitor waitor;
-    private Chef chef;
+    private Table table;
+    private Set<OrderItem> orderItems;
 }

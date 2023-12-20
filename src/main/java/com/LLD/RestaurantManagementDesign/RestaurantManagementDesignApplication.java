@@ -12,6 +12,11 @@ public class RestaurantManagementDesignApplication {
         Customer c1 = new Customer("1","Utkarsh","3");
         Customer c2 = new Customer("2","Vishal","3");
         Customer c3 = new Customer("3","Kulbhushan","4");
+
+        //  TODO: search for tables depending upon number of customers
+
+        //  placeOrder
+
         System.out.println("Run !!!");
     }
 }
