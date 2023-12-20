@@ -1,11 +1,14 @@
 package com.LLD.RestaurantManagementDesign.Entity;
 
-public class Customer extends Person{
-    private String tableId;
+import lombok.Data;
 
-    public Customer(String id, String name, String tableId) {
+@Data
+public class Customer extends Person{
+    private Table table;
+
+    public Customer(String id, String name, Table table) {
         super(id, name);
-        this.tableId = tableId;
+        this.table = table;
     }
 
     public void placeOrder(){

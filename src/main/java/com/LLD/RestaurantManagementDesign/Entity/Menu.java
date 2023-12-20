@@ -6,14 +6,14 @@ import java.util.Map;
 import java.util.UUID;
 
 public class Menu {
-    Map<String,MenuItem> menuItems;
+    Map<String,MenuItem> menuItems; //  map -> facilitates storing metadata against a dish name
     private static Menu instance;
 
     private Menu(Map<String,MenuItem> menuItems){
         this.menuItems = menuItems;
     }
 
-    public Menu getInstance(Map<String,MenuItem> menuItems){
+    public static Menu getInstance(Map<String,MenuItem> menuItems){
         if(instance==null){
             instance = new Menu(menuItems);
         }

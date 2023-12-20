@@ -1,12 +1,30 @@
 package com.LLD.RestaurantManagementDesign.Service;
 
-import com.LLD.RestaurantManagementDesign.Entity.MenuItem;
-import com.LLD.RestaurantManagementDesign.Entity.Table;
+import com.LLD.RestaurantManagementDesign.Entity.*;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class OrderService {
-    public void createOrder(Table table, List<MenuItem> menuItems){
 
+    private static OrderService instance;
+
+    private OrderService(){}
+
+    public static OrderService getInstance(){
+        if(instance==null){
+            instance = new OrderService();
+        }
+        return instance;
+    }
+
+    public void createOrder(Customer customer, List<MenuItem> menuItems){
+        Order order = new Order(customer.getTable());
+        for(MenuItem menuItem:menuItems){
+            order.addOrderItem(new OrderItem(order,menuItem));
+        }
+        //  assign order to cook
     }
 }
