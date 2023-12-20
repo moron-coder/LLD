@@ -15,6 +15,9 @@ public class RestaurantManagementDesignApplication {
 
         //  TODO: search for tables depending upon number of customers
 
+        //  create Menu
+
+
         //  placeOrder
 
         System.out.println("Run !!!");

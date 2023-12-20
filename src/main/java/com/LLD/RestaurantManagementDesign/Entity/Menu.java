@@ -1,11 +1,24 @@
 package com.LLD.RestaurantManagementDesign.Entity;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 public class Menu {
     Map<String,MenuItem> menuItems;
+    private static Menu instance;
+
+    private Menu(Map<String,MenuItem> menuItems){
+        this.menuItems = menuItems;
+    }
+
+    public Menu getInstance(Map<String,MenuItem> menuItems){
+        if(instance==null){
+            instance = new Menu(menuItems);
+        }
+        return instance;
+    }
 
     public void addMenuItem(String name, double price){
         if(menuItems.containsKey(name)){
