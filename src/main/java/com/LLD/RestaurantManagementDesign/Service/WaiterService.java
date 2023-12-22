@@ -8,9 +8,6 @@ import java.util.Set;
 
 public class WaiterService {
 
-    @Autowired
-    private WaiterDao waiterDao;
-
     private static WaiterService instance;
 
     private WaiterService(){}
@@ -35,6 +32,7 @@ public class WaiterService {
     }
 
     private Waiter assignWaiter(Table table){
+        WaiterDao waiterDao = WaiterDao.getInstance();
         if(table==null){
             System.out.println("Empty table passed");
             return null;

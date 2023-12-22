@@ -10,7 +10,17 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 @Data
-@Repository
 public class WaiterDao {
     Queue<Waiter> waiters =new LinkedList<>();
+
+    private static WaiterDao instance;
+
+    private WaiterDao(){}
+
+    public static WaiterDao getInstance(){
+        if(instance==null){
+            instance = new WaiterDao();
+        }
+        return instance;
+    }
 }

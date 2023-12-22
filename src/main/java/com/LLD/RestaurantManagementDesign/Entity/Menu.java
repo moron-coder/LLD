@@ -1,5 +1,7 @@
 package com.LLD.RestaurantManagementDesign.Entity;
 
+import com.LLD.RestaurantManagementDesign.Factory.MenuItemFactory;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +26,10 @@ public class Menu {
         if(menuItems.containsKey(name)){
             System.out.println("Item already present in menu : "+name);
         }else{
-            menuItems.put(name,new MenuItem(name,price));
+            MenuItem menuItem = MenuItemFactory.getMenuItem(name,price);
+            if(menuItem!=null) {
+                menuItems.put(name,menuItem);
+            }
         }
     }
 

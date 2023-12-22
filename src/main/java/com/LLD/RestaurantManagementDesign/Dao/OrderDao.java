@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Map;
 
 @Data
-@Repository
 public class OrderDao {
     Map<String, Order> orderMap;
 }

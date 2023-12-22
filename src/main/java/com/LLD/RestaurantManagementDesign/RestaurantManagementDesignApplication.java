@@ -50,9 +50,6 @@ public class RestaurantManagementDesignApplication {
         }catch (Exception e){
             System.out.println("Error in thread sleep : "+e);
         }
-
-
-
         System.out.println("Run !!!");
     }
 }

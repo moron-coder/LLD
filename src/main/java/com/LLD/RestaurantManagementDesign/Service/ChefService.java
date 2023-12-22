@@ -7,15 +7,11 @@ import com.LLD.RestaurantManagementDesign.Entity.MenuItem;
 import com.LLD.RestaurantManagementDesign.Entity.OrderItem;
 import com.LLD.RestaurantManagementDesign.Factory.MenuItemFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 public class ChefService {
-    @Autowired
-    private ChefDao chefDao;
     private static ChefService instance;
 
     private ChefService(){}
@@ -38,14 +34,22 @@ public class ChefService {
             }
         }
         chef.addMenuItems(menuItemsToAdd);
+
+        ChefDao chefDao = ChefDao.getInstance();
         for(MenuItem item:menuItemsToAdd){
-            chefDao.getItemChefsMap().get(item).add(chef);
+            Queue<Chef> chefQueue = chefDao.getItemChefsMap().get(item);
+            if(CollectionUtils.isEmpty(chefQueue)){
+                chefQueue = new LinkedList<>();
+            }
+            chefQueue.add(chef);
+            chefDao.getItemChefsMap().put(item,chefQueue);
         }
         chefDao.getChefs().add(chef);
         return chef;
     }
 
     public void assignOrderItems(Set<OrderItem> orderItems){
+        ChefDao chefDao = ChefDao.getInstance();
         for(OrderItem item:orderItems){
             if(!chefDao.getItemChefsMap().containsKey(item)){
                 System.out.println("Unknown item "+item);
