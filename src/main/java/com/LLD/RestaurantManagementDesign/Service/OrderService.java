@@ -25,6 +25,7 @@ public class OrderService {
         for(MenuItem menuItem:menuItems){
             order.addOrderItem(new OrderItem(order,menuItem));
         }
-        //  assign order to cook
+        WaiterService waiterService = WaiterService.getInstance();
+        waiterService.getOrderFromCustomer(customer.getTable(),order);
     }
 }

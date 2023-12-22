@@ -7,6 +7,7 @@ import lombok.Data;
 public class OrderItem {
     private MenuItem menuItem;
     private Order order;
+    private Chef chef;
 
     public OrderItem(Order order, MenuItem item) {
         this.menuItem=item;

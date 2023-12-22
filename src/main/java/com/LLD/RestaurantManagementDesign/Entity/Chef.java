@@ -1,19 +1,22 @@
 package com.LLD.RestaurantManagementDesign.Entity;
 
-import java.awt.*;
-import java.util.HashMap;
 import java.util.HashSet;
 
 public class Chef extends Person{
-    HashMap<Chef, HashSet<MenuItem>> chefItems;
+    HashSet<OrderItem> orderItems;
 
     public Chef(String id, String name) {
         super(id, name);
-        chefItems = new HashMap<>();
+        orderItems = new HashSet<>();
     }
 
-    public Chef(String id, String name, HashMap<Chef, HashSet<MenuItem>> chefItems) {
+    public Chef(String id, String name, HashSet<OrderItem> orderItems) {
         super(id, name);
-        this.chefItems = chefItems;
+        this.orderItems = orderItems;
+    }
+
+    public void addOrderItem(OrderItem item){
+        this.orderItems.add(item);
+        item.setChef(this);
     }
 }

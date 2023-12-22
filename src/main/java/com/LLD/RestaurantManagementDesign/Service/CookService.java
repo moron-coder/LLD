@@ -3,20 +3,27 @@ package com.LLD.RestaurantManagementDesign.Service;
 import com.LLD.RestaurantManagementDesign.Dao.ChefDao;
 import com.LLD.RestaurantManagementDesign.Entity.Chef;
 import com.LLD.RestaurantManagementDesign.Entity.OrderItem;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 
 public class CookService {
+    @Autowired
     private ChefDao chefDao;
-    private WaiterService waiterService;
+    private static CookService instance;
 
-    public CookService(ChefDao chefDao, WaiterService waiterService){
-        this.chefDao = chefDao;
-        this.waiterService = waiterService;
+    private CookService(){}
+
+    public static CookService getInstance(){
+        if(instance==null){
+            instance = new CookService();
+        }
+        return instance;
     }
 
-    public void assignOrderItems(List<OrderItem> orderItems){
+    public void assignOrderItems(Set<OrderItem> orderItems){
         for(OrderItem item:orderItems){
             if(!chefDao.getItemChefsMap().containsKey(item)){
                 System.out.println("Unknown item "+item);
@@ -26,7 +33,7 @@ public class CookService {
                     System.out.println("No chef left to cook item "+item);
                 }else{
                     Chef chef = chefQueue.poll();
-                    chefDao.getChefOrderItemsMap().get(chef).add(item);
+                    chef.addOrderItem(item);
                     chefQueue.add(chef);
                 }
             }
