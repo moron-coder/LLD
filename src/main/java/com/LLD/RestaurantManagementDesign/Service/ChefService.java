@@ -51,17 +51,18 @@ public class ChefService {
     public void assignOrderItems(Set<OrderItem> orderItems){
         ChefDao chefDao = ChefDao.getInstance();
         for(OrderItem item:orderItems){
-            if(!chefDao.getItemChefsMap().containsKey(item)){
+            HashMap<MenuItem,Queue<Chef>> mp = chefDao.getItemChefsMap();
+            if(!mp.containsKey(item)){
                 System.out.println("Unknown item "+item);
             }else{
-                Queue<Chef> chefQueue = chefDao.getItemChefsMap().get(item);
-                if(chefQueue.isEmpty()){
-                    System.out.println("No chef left to cook item "+item);
-                }else{
-                    Chef chef = chefQueue.poll();
-                    chef.addOrderItem(item);
-                    chefQueue.add(chef);
-                }
+//                Queue<Chef> chefQueue = chefDao.getItemChefsMap().get(item);
+//                if(chefQueue.isEmpty()){
+//                    System.out.println("No chef left to cook item "+item);
+//                }else{
+//                    Chef chef = chefQueue.poll();
+//                    chef.addOrderItem(item);
+//                    chefQueue.add(chef);
+//                }
             }
         }
     }

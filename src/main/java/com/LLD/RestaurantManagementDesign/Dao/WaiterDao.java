@@ -23,4 +23,9 @@ public class WaiterDao {
         }
         return instance;
     }
+
+    public void addWaiter(String name){
+        Waiter waiter = new Waiter(name);
+        waiters.add(waiter);
+    }
 }

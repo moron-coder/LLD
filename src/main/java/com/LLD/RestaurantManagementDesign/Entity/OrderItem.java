@@ -3,7 +3,6 @@ package com.LLD.RestaurantManagementDesign.Entity;
 import com.LLD.RestaurantManagementDesign.Entity.MenuItem;
 import lombok.Data;
 
-@Data
 public class OrderItem {
     private MenuItem menuItem;
     private Order order;
@@ -20,5 +19,13 @@ public class OrderItem {
             this.menuItem.equals(((OrderItem)obj).menuItem);
         }
         return false;
+    }
+
+    public void setOrder(Order order){
+        this.order=order;
+    }
+
+    public void setChef(Chef chef){
+        this.chef=chef;
     }
 }
