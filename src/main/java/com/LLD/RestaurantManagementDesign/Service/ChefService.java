@@ -55,14 +55,14 @@ public class ChefService {
             if(!mp.containsKey(item.getMenuItem())){
                 System.out.println("-> Unknown item "+item);
             }else{
-//                Queue<Chef> chefQueue = chefDao.getItemChefsMap().get(item);
-//                if(chefQueue.isEmpty()){
-//                    System.out.println("No chef left to cook item "+item);
-//                }else{
-//                    Chef chef = chefQueue.poll();
-//                    chef.addOrderItem(item);
-//                    chefQueue.add(chef);
-//                }
+                Queue<Chef> chefQueue = chefDao.getItemChefsMap().get(item);
+                if(CollectionUtils.isEmpty(chefQueue)){
+                    System.out.println("No chef left to cook item "+item);
+                }else{
+                    Chef chef = chefQueue.poll();
+                    chef.addOrderItem(item);
+                    chefQueue.add(chef);
+                }
             }
         }
     }
