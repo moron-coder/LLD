@@ -55,7 +55,7 @@ public class WaiterService {
             return;
         }
         waiter.takeOrder(order);
-        CookService cookService = CookService.getInstance();
-        cookService.assignOrderItems(order.getOrderItems());
+        ChefService chefService = ChefService.getInstance();
+        chefService.assignOrderItems(order.getOrderItems());
     }
 }

@@ -6,13 +6,12 @@ import com.LLD.RestaurantManagementDesign.Entity.OrderItem;
 import lombok.Data;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 @Data
 @Repository
 public class ChefDao {
     Map<MenuItem, Queue<Chef>> itemChefsMap=new HashMap<>();
+
+    Queue<Chef> chefs = new LinkedList<>();
 }

@@ -1,10 +1,8 @@
 package com.LLD.RestaurantManagementDesign.Entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 
-@AllArgsConstructor
-@Data
+@Getter
 public class MenuItem {
     private String name;
     private double price;
