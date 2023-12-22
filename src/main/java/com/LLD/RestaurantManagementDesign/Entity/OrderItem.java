@@ -25,7 +25,16 @@ public class OrderItem {
         this.order=order;
     }
 
+    public MenuItem getMenuItem(){
+        return this.menuItem;
+    }
+
     public void setChef(Chef chef){
         this.chef=chef;
+    }
+
+    @Override
+    public String toString(){
+        return "OrderItem : "+this.menuItem;
     }
 }

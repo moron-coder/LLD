@@ -52,8 +52,8 @@ public class ChefService {
         ChefDao chefDao = ChefDao.getInstance();
         for(OrderItem item:orderItems){
             HashMap<MenuItem,Queue<Chef>> mp = chefDao.getItemChefsMap();
-            if(!mp.containsKey(item)){
-                System.out.println("Unknown item "+item);
+            if(!mp.containsKey(item.getMenuItem())){
+                System.out.println("-> Unknown item "+item);
             }else{
 //                Queue<Chef> chefQueue = chefDao.getItemChefsMap().get(item);
 //                if(chefQueue.isEmpty()){

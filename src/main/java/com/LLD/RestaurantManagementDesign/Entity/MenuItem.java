@@ -16,4 +16,9 @@ public class MenuItem {
         }
         return false;
     }
+
+    @Override
+    public String toString(){
+        return "MenuItemName : "+this.name;
+    }
 }
