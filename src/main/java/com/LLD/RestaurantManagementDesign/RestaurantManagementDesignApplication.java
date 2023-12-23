@@ -49,13 +49,20 @@ public class RestaurantManagementDesignApplication {
 
         //  placeOrder (Producer)
         OrderService orderService = OrderService.getInstance();
-        orderService.createOrder(c1, Arrays.asList(roti));
+        Order order = orderService.createOrder(c1, Arrays.asList(roti));
 
         try{
             Thread.sleep(3000);
         }catch (Exception e){
             System.out.println("Error in thread sleep : "+e);
         }
+        //  handle chef cooked food event
+        for(OrderItem orderItem : order.getOrderItems()){
+            //  cook item by item
+            chefService.handleOrderItemCooked(orderItem);
+        }
+
+
         System.out.println("Run !!!");
     }
 }

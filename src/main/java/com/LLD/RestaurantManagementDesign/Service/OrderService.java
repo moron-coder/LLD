@@ -20,12 +20,13 @@ public class OrderService {
         return instance;
     }
 
-    public void createOrder(Customer customer, List<MenuItem> menuItems){
+    public Order createOrder(Customer customer, List<MenuItem> menuItems){
         Order order = new Order(customer.getTable());
         for(MenuItem menuItem:menuItems){
             order.addOrderItem(new OrderItem(order,menuItem));
         }
         WaiterService waiterService = WaiterService.getInstance();
         waiterService.getOrderFromCustomer(customer.getTable(),order);
+        return order;
     }
 }
