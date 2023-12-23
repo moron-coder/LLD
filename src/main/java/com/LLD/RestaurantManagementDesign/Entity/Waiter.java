@@ -30,4 +30,9 @@ public class Waiter extends Person{
         }
         return false;
     }
+
+    @Override
+    public String toString(){
+        return "waiter : "+this.getName();
+    }
 }

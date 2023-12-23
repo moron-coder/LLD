@@ -56,11 +56,12 @@ public class ChefService {
                 System.out.println("-> Unknown item "+item);
             }else{
                 Queue<Chef> chefQueue = chefDao.getItemChefsMap().get(item.getMenuItem());
-                if(CollectionUtils.isEmpty(chefQueue)){
+                if(CollectionUtils.isEmpty(chefQueue) || chefQueue.peek()==null){
                     System.out.println("No chef left to cook item "+item);
                 }else{
                     Chef chef = chefQueue.poll();
                     chef.addOrderItem(item);
+                    System.out.println(chef+" is cooking "+item);
                     chefQueue.add(chef);
                 }
             }

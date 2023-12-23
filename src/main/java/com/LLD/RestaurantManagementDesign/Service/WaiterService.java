@@ -43,6 +43,7 @@ public class WaiterService {
             return null;
         }
         waiter.addTable(table);
+        System.out.println(waiter+" is assigned to "+table);
         return waiter;
     }
 

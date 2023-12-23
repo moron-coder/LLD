@@ -29,4 +29,9 @@ public class Chef extends Person{
         this.orderItems.add(item);
         item.setChef(this);
     }
+
+    @Override
+    public String toString(){
+        return "chef : "+this.getName();
+    }
 }

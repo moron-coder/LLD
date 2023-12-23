@@ -8,4 +8,9 @@ import lombok.Data;
 public class Table {
     private String tableId;
     private Waiter waiter;
+
+    @Override
+    public String toString(){
+        return "table : "+tableId;
+    }
 }
