@@ -37,7 +37,7 @@ public class WaiterService {
             System.out.println("Empty table passed");
             return null;
         }
-        Waiter waiter =  waiterDao.getWaiters().poll();
+        Waiter waiter = waiterDao.getWaiters().poll();
         if(waiter==null){
             System.out.println("No waiter available to take order");
             return null;

@@ -55,7 +55,7 @@ public class ChefService {
             if(!mp.containsKey(item.getMenuItem())){
                 System.out.println("-> Unknown item "+item);
             }else{
-                Queue<Chef> chefQueue = chefDao.getItemChefsMap().get(item);
+                Queue<Chef> chefQueue = chefDao.getItemChefsMap().get(item.getMenuItem());
                 if(CollectionUtils.isEmpty(chefQueue)){
                     System.out.println("No chef left to cook item "+item);
                 }else{
