@@ -26,7 +26,7 @@ public class MachineService {
             System.out.println("Positive number of balls can be inserted");
             return;
         }
-        AtomicInteger initCt = ballsCount;
+        AtomicInteger initCt = new AtomicInteger(ballsCount.get());
         System.out.println("Trying to insert "+ballsCt+" balls");
         System.out.println(ballsCount.get()+" is current value and "+initCt.get()+" is expected value");
         if(ballsCount.compareAndSet(initCt.get(), initCt.addAndGet(ballsCt))) {
