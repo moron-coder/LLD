@@ -28,8 +28,7 @@ public class MachineService {
         }
         AtomicInteger initCt = new AtomicInteger(ballsCount.get());
         if(ballsCount.compareAndSet(initCt.get(), initCt.addAndGet(ballsCt))) {
-            if (!machineState.compareAndSet(OUT_OF_GUMBALLS, NO_QUARTER)
-                    && !(machineState.get() == NO_QUARTER)) {
+            if(!(machineState.get()==OUT_OF_GUMBALLS) && !(machineState.get()==NO_QUARTER)){
                 System.out.println("Cannot insert balls at state " + machineState.get());
                 ballsCount.set(initCt.get());
             }else{
